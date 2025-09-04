@@ -33,4 +33,7 @@ npx ai-elements@latest add sources reasoning loader
 
 ``` 
 移到ai-elements目录下
-10. 注意修改useChat的api路径为/api/chatbot
+
+10.  注意修改useChat的api路径为/api/chatbot
+    
+11.  研究GenerateText的用法，实现extractCMP（Costume, Makeup, and Props）剧本提取服化道的功能页面
