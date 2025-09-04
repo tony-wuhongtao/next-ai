@@ -1,7 +1,21 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Read(/D:\\Coding\\next-ai\\app/**)",
+      "Read(/D:\\Coding\\next-ai\\components/**)",
+      "Read(/D:\\Coding\\next-ai\\components\\ui/**)",
+      "Read(/D:\\Coding\\next-ai\\app/**)",
+      "Read(/D:\\Coding\\next-ai/**)",
+      "Read(/D:\\Coding\\next-ai\\app\\chat/**)",
+      "Read(/D:\\Coding\\next-ai\\app\\chat/**)",
+      "Read(/D:\\Coding\\next-ai\\app\\chatbot/**)",
+      "Read(/D:\\Coding\\next-ai\\app\\mychat/**)",
+      "Read(/D:\\Coding\\next-ai\\app\\extractCMP/**)",
+      "Read(/D:\\Coding\\next-ai\\app\\extractCMP/**)",
+      "Read(/D:\\Coding\\next-ai\\app\\extractCMPstream/**)",
+      "Read(/D:\\Coding\\next-ai\\components\\ui/**)",
+      "Read(/D:\\Coding\\next-ai\\app/**)"
     ],
     "deny": [],
     "ask": []

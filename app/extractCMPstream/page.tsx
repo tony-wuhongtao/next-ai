@@ -2,12 +2,14 @@
 
 import { Button } from '@/components/ui/button';
 import { useState, useRef, useEffect } from 'react';
-import ReactMarkdown from 'react-markdown';
+import { useCompletion } from '@ai-sdk/react';
 import { Loader2Icon, SendIcon, PickaxeIcon } from "lucide-react"
 
+import ReactMarkdown from 'react-markdown';
+
 export default function Page() {
-    const [generation, setGeneration] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
+
+
     const [isContextMenuLoading, setIsContextMenuLoading] = useState(false); // 新增状态用于跟踪右键菜单的加载状态
     const [prompt, setPrompt] = useState('');
     const [contextMenu, setContextMenu] = useState({ visible: false, x: 0, y: 0, selectedText: '' });
@@ -71,28 +73,19 @@ export default function Page() {
         if (!contextMenu.selectedText) return;
 
         hideContextMenu();
-        setGeneration('');
+
         setSelectedTextForAnalysis(contextMenu.selectedText); // 保存选中的文本
-        setIsLoading(true);
+
         setIsContextMenuLoading(true); // 设置右键菜单加载状态
 
         try {
-            const response = await fetch('/api/extractCMPCompletion', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    prompt: '请提取服化道,不需要解释，直接提取服装，化妆，道具元素，剧本如下：' + contextMenu.selectedText,
-                }),
-            });
+            await complete('请提取服化道,不需要解释，直接提取服装，化妆，道具元素，剧本如下：' + contextMenu.selectedText);
 
-            const json = await response.json();
-            setGeneration(json.text);
+
         } catch (error) {
             console.error('Error:', error);
         } finally {
-            setIsLoading(false);
+
             setIsContextMenuLoading(false); // 重置右键菜单加载状态
         }
     };
@@ -112,9 +105,14 @@ export default function Page() {
         };
     }, []);
 
+    const { completion, complete, isLoading } = useCompletion({
+        api: '/api/extractCMPstreamCompletion',
+
+    })
+
     return (
         <div className="max-w-4xl mx-auto p-6 relative size-full h-screen">
-            <h1 className="text-3xl font-bold mb-4">提取服化道元素演示</h1>
+            <h1 className="text-3xl font-bold mb-4">流式提取服化道元素演示</h1>
             <div className="relative">
                 <textarea
                     ref={textareaRef}
@@ -170,6 +168,8 @@ export default function Page() {
                 </div>
             )}
 
+
+
             <Button
                 variant="default"
                 size="lg"
@@ -178,21 +178,12 @@ export default function Page() {
                     if (!prompt) {
                         return;
                     }
-                    setGeneration('');
-                    setSelectedTextForAnalysis(''); // 清空之前选中的文本
-                    setIsLoading(true);
 
-                    await fetch('/api/extractCMPCompletion', {
-                        method: 'POST',
-                        body: JSON.stringify({
-                            prompt: '请提取服化道,不需要解释，直接提取服装，化妆，道具元素，剧本如下：' + prompt,
-                        }),
-                    }).then(response => {
-                        response.json().then(json => {
-                            setGeneration(json.text);
-                            setIsLoading(false);
-                        });
-                    });
+                    setSelectedTextForAnalysis(''); // 清空之前选中的文本
+
+                    await complete('请提取服化道,不需要解释，直接提取服装，化妆，道具元素，剧本如下：' + prompt);
+
+
                 }}
                 disabled={!prompt || isLoading}
             >
@@ -211,7 +202,7 @@ export default function Page() {
 
             <div className='mt-4 w-full h-200 p-4 rounded-md resize-none border border-gray-300 overflow-auto'>
                 <article className='prose prose-slate max-w-none'>
-                    <ReactMarkdown>{generation}</ReactMarkdown>
+                    <ReactMarkdown>{completion}</ReactMarkdown>
                 </article>
             </div>
         </div>

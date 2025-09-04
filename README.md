@@ -37,3 +37,5 @@ npx ai-elements@latest add sources reasoning loader
 10.  注意修改useChat的api路径为/api/chatbot
     
 11.  研究GenerateText的用法，实现extractCMP（Costume, Makeup, and Props）剧本提取服化道的功能页面
+    
+12.  使用useCompletion实现流式输出，实现extractCMPstream页面
