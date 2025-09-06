@@ -125,7 +125,7 @@ export default function Page() {
 
     return (
         <div className="max-w-4xl mx-auto p-6 relative size-full h-screen">
-            <h1 className="text-3xl font-bold mb-4">提取服化道元素Object演示</h1>
+            <h1 className="text-3xl font-bold mb-4">提取服化道元素结构化数据演示（基于qwen-plus）</h1>
             <div className="relative">
                 <textarea
                     ref={textareaRef}

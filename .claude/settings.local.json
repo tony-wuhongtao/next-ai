@@ -40,7 +40,9 @@
       "Read(/D:\\Coding\\next-ai/**)",
       "WebSearch",
       "WebFetch(domain:ai-sdk.dev)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git tag:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []

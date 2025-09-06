@@ -49,8 +49,8 @@ export default function HomePage() {
         },
         {
             id: 'extractCMPObject',
-            title: '服化道元素Object提取',
-            description: '利用阿里云Dashscope的qwen-plus，从剧本中提取服装、化妆、道具元素json',
+            title: '服化道元素结构化数据提取',
+            description: '利用阿里云Dashscope的qwen-plus，从剧本中提取服装、化妆、道具元素结构化数据',
             icon: <Zap className="h-6 w-6" />,
             path: '/extractCMPObject'
         }
