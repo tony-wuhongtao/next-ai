@@ -46,6 +46,13 @@ export default function HomePage() {
             description: '利用阿里云Dashscope的Deepseek-V3.1，流式响应的服装、化妆、道具元素提取功能',
             icon: <Zap className="h-6 w-6" />,
             path: '/extractCMPstream'
+        },
+        {
+            id: 'extractCMPObject',
+            title: '服化道元素Object提取',
+            description: '利用阿里云Dashscope的qwen-plus，从剧本中提取服装、化妆、道具元素json',
+            icon: <Zap className="h-6 w-6" />,
+            path: '/extractCMPObject'
         }
     ];
 
