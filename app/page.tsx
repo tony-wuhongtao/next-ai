@@ -7,7 +7,9 @@ import {
     Bot,
     User,
     Scissors,
-    Zap
+    Zap,
+    Wand,
+    Sparkles
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -48,10 +50,17 @@ export default function HomePage() {
             path: '/extractCMPstream'
         },
         {
+            id: 'extractPropsStream',
+            title: '道具信息流式提取',
+            description: '利用阿里云Dashscope的Deepseek-V3.1，流式响应的道具元素提取功能',
+            icon: <Wand className="h-6 w-6" />,
+            path: '/extractPropsStream'
+        },
+        {
             id: 'extractCMPObject',
             title: '服化道元素结构化数据提取',
             description: '利用阿里云Dashscope的qwen-plus，从剧本中提取服装、化妆、道具元素结构化数据',
-            icon: <Zap className="h-6 w-6" />,
+            icon: <Sparkles className="h-6 w-6" />,
             path: '/extractCMPObject'
         }
     ];
